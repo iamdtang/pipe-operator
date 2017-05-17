@@ -28,27 +28,27 @@ describe('pipe-operator', function() {
 
   describe('examples', function() {
     it('with a single pipe() call', function() {
-      let sum = (a, b) => {
+      function sum(a, b) {
         return a + b;
-      };
+      }
 
       let result = take(1).pipe(sum, 5).result();
       expect(result).to.equal(6);
     });
 
     it('with multiple pipe() chains', function() {
-      let sum = (a, b) => {
+      function sum(a, b) {
         return a + b;
-      };
+      }
 
       let result = take(1).pipe(sum, 5).pipe(sum, 4).result();
       expect(result).to.equal(10);
     });
 
     it('with multiple arguments in a pipe() call', function() {
-      let sum = (a, b, c, d) => {
+      function sum(a, b, c, d) {
         return a + b + c + d;
-      };
+      }
 
       let result = take(1).pipe(sum, 3, 2, 4).result();
       expect(result).to.equal(10);
