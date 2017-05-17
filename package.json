@@ -1,6 +1,6 @@
 {
   "name": "pipe-operator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A small library to simulate the pipe operator in languages like Elixir for JavaScript",
   "main": "src/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/skaterdav85/pipe-operator"
   },
   "keywords": [
     "pipe",
