@@ -10,14 +10,25 @@ A small library to simulate the pipe operator in languages like Elixir for JavaS
 npm install pipe-operator
 ```
 
+```js
+let take = require('pipe-operator');
+```
+
 ## Usage
 
 ```js
-function sum(a, b) {
-  return a + b;
+function sum(...args) {
+  return args.reduce((total, number) => {
+    return total + number;
+  }, 0);
 }
 
-take(1).pipe(sum, 3, 2).pipe(sum, 4).result(); // 10
+take(1)
+  .pipe(sum, 3, 2)
+  .pipe(sum, 4)
+  .result();
+
+// 10
 ```
 
 Thanks to [Sebastiaan Luca](https://blog.sebastiaanluca.com/enabling-php-method-chaining-with-a-makeshift-pipe-operator) for the API inspiration.
