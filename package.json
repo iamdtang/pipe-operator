@@ -13,7 +13,8 @@
   "keywords": [
     "pipe",
     "operator",
-    "elixir"
+    "elixir",
+    "pipeline"
   ],
   "author": "David Tang",
   "license": "MIT",
