@@ -17,7 +17,7 @@ let { take, native } = require('pipe-operator');
 ## Usage
 
 ```js
-let result = take(text)
+let frequentWords = take(text)
   .pipe(removePunctuation)
   .pipe(removeBadWords)
   .pipe(findMostFrequentWords)
@@ -31,12 +31,12 @@ function findMostFrequentWords(string) { /* ... */ }
 `pipe()` can also take additional arguments for the passed in function:
 
 ```js
-let result = take(1)
+let total = take(1)
   .pipe(sum, 3, 2)
   .pipe(sum, 4)
   .result();
 
-// result === 10
+// total === 10
 
 function sum(...args) {
   return args.reduce((total, number) => {
@@ -48,23 +48,23 @@ function sum(...args) {
 If you want to pipe to built-in prototype methods, use the `native()` function:
 
 ```js
-let result = take('JavaScript, Elixir, PHP')
+let languages = take('JavaScript, Elixir, PHP')
   .pipe(native(String.prototype.split, ','))
   .pipe(native(Array.prototype.map, function(string) {
     return string.trim();
   }))
   .result();
 
-// result === ['JavaScript', 'Elixir', 'PHP']
+// languages === ['JavaScript', 'Elixir', 'PHP']
 
 // OR
 
-let result = take('JavaScript, Elixir, PHP')
+let languages = take('JavaScript, Elixir, PHP')
   .pipe(native(String.prototype.split, ','))
   .pipe(native(Array.prototype.map, native(String.prototype.trim)))
   .result();
 
-// result === ['JavaScript', 'Elixir', 'PHP']
+// languages === ['JavaScript', 'Elixir', 'PHP']
 ```
 
 Thanks to [Sebastiaan Luca](https://blog.sebastiaanluca.com/enabling-php-method-chaining-with-a-makeshift-pipe-operator) for the API inspiration.
