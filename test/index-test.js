@@ -1,6 +1,6 @@
 let { expect } = require('chai');
 let td = require('testdouble');
-let take = require('./../src/index');
+let { take, native } = require('./../src/index');
 
 describe('pipe-operator', function() {
   describe('pipe()', function() {
@@ -23,6 +23,14 @@ describe('pipe-operator', function() {
       td.when(stub(1)).thenReturn('hello');
       let result = take(1).pipe(stub).result();
       expect(result).to.equal('hello');
+    });
+  });
+
+  describe('native()', function() {
+    it(`should curry a native function`, function() {
+      let split = native(String.prototype.split, ', ');
+      let result = split('JavaScript, Elixir, PHP');
+      expect(result).to.eql(['JavaScript', 'Elixir', 'PHP']);
     });
   });
 
@@ -52,6 +60,35 @@ describe('pipe-operator', function() {
 
       let result = take(1).pipe(sum, 3, 2, 4).result();
       expect(result).to.equal(10);
+    });
+
+    it('with native functions', function() {
+      let result = take('   JavaScript    ')
+        .pipe(native(String.prototype.trim))
+        .pipe(native(String.prototype.toUpperCase))
+        .result();
+
+      expect(result).to.equal('JAVASCRIPT');
+    });
+
+    it('with native functions', function() {
+      let result = take('JavaScript, Elixir, PHP')
+        .pipe(native(String.prototype.split, ','))
+        .pipe(native(Array.prototype.map, function(string) {
+          return string.trim();
+        }))
+        .result();
+
+      expect(result).to.eql(['JavaScript', 'Elixir', 'PHP']);
+    });
+
+    it('with nested native functions', function() {
+      let result = take('JavaScript, Elixir, PHP')
+        .pipe(native(String.prototype.split, ','))
+        .pipe(native(Array.prototype.map, native(String.prototype.trim)))
+        .result();
+
+      expect(result).to.eql(['JavaScript', 'Elixir', 'PHP']);
     });
   });
 });

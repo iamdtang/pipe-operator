@@ -31,4 +31,26 @@ take(1)
 // 10
 ```
 
+If you want to pipe to built-in prototype methods, use the `native()` function:
+
+```js
+take('JavaScript, Elixir, PHP')
+  .pipe(native(String.prototype.split, ','))
+  .pipe(native(Array.prototype.map, function(string) {
+    return string.trim();
+  }))
+  .result();
+
+// ['JavaScript', 'Elixir', 'PHP']
+
+// OR
+
+take('JavaScript, Elixir, PHP')
+  .pipe(native(String.prototype.split, ','))
+  .pipe(native(Array.prototype.map, native(String.prototype.trim)))
+  .result();
+
+// ['JavaScript', 'Elixir', 'PHP']
+```
+
 Thanks to [Sebastiaan Luca](https://blog.sebastiaanluca.com/enabling-php-method-chaining-with-a-makeshift-pipe-operator) for the API inspiration.

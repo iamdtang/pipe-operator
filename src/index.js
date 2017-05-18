@@ -1,5 +1,11 @@
-module.exports = function take(value) {
+module.exports.take = function take(value) {
   return new Pipe(value);
+};
+
+module.exports.native = function native(fn, ...args) {
+  return function(object) {
+    return fn.apply(object, args);
+  };
 };
 
 class Pipe {
