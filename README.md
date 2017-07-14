@@ -2,7 +2,7 @@
 
 # pipe-operator
 
-A small library to simulate the pipe operator in languages like Elixir for JavaScript.
+A small library for creating pipelines in JavaScript. This mimics the pipe operator in other functional languages such as Elixir.
 
 ## Installation
 
@@ -11,7 +11,7 @@ npm install pipe-operator
 ```
 
 ```js
-let { take, native } = require('pipe-operator');
+const { take, native } = require('pipe-operator');
 ```
 
 ## Usage

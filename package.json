@@ -1,7 +1,7 @@
 {
   "name": "pipe-operator",
-  "version": "0.0.6",
-  "description": "A small library to simulate the pipe operator in languages like Elixir for JavaScript",
+  "version": "0.0.7",
+  "description": "A small library for creating pipelines in JavaScript. This mimics the pipe operator in other functional languages such as Elixir.",
   "main": "src/index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
@@ -11,10 +11,13 @@
     "url": "https://github.com/skaterdav85/pipe-operator"
   },
   "keywords": [
+    "pipe operator",
+    "pipeline operator",
     "pipe",
+    "pipeline",
     "operator",
     "elixir",
-    "pipeline"
+    "functional programming"
   ],
   "author": "David Tang",
   "license": "MIT",
